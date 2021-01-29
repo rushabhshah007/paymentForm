@@ -1,0 +1,23 @@
+<div class="home">
+	<mat-card class="detail-card">
+		<h1 class="detail-header">Card Details</h1>
+		<hr class="horizontal-line" />
+		<div class="detail-field">
+			<span class="detail-field-label">Credit Card Number</span> : {{ (card$ | async).cardNumber }}
+		</div>
+		<div class="detail-field">
+			<span class="detail-field-label">Credit Holder</span> : {{ (card$ | async).holder }}
+		</div>
+		<div class="detail-field">
+			<span class="detail-field-label">Expiration Date</span> : {{ (card$ | async).expirationDate }}
+		</div>
+		<div class="detail-field">
+			<span class="detail-field-label">Security Code (CCV)</span> : {{ (card$ | async).securityCode }}
+		</div>
+		<div class="detail-field">
+			<span class="detail-field-label">Amount</span> : {{ (card$ | async).amount }}
+		</div>
+		<div class="actions">
+			<button mat-flat-button routerLink="/payment" color="primary">Make Payment</button></div>
+	</mat-card>
+</div>

@@ -1,0 +1,57 @@
+.form-field {
+    margin: 1em;
+  }
+  
+  .form-actions {
+    display: flex;
+    gap: 3em;
+    margin: 1em;
+    justify-content: flex-end;
+  }
+  
+  .card-form {
+    width: 50%;
+  }
+  
+  .card-form-parent {
+    width: 100%;
+  }
+  
+  .card-mat-form-field {
+    width: 90%;
+    margin-left: 1.5em;
+  }
+  
+  .card-form-block {
+    margin: 2em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .card-form-title {
+    text-align: center;
+    width: 80%;
+  }
+  
+  .card-form-header {
+    display: flex;
+  }
+  
+  .back-icon {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .back-icon:hover {
+    color: #858585;
+  }
+  
+  .visibility-icon {
+    margin-right: 0.35em;
+    cursor: pointer;
+  }
+  

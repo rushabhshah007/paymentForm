@@ -1,0 +1,64 @@
+<div class="card-form-block">
+	<mat-card class="card-form">
+		<div class="card-form-header">
+			<span class="back-icon" (click)="navigateHome()">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">keyboard_backspace</mat-icon>
+      </span>
+			<h1 class="card-form-title">Make Payment</h1>
+		</div>
+		<div class="form-fields">
+			<form class="card-form-parent" [formGroup]="paymentCard">
+				<mat-form-field class="card-mat-form-field" appearance="outline">
+					<mat-label>Credit Card Number</mat-label>
+					<input matInput [errorStateMatcher]="errorStateMatcher" formControlName="cardNumber"/>
+					<mat-error *ngIf="paymentCard.controls.cardNumber.hasError('required')">Please fill in the card number
+					</mat-error>
+				</mat-form-field><br/>
+				<mat-form-field class="card-mat-form-field" appearance="outline">
+					<mat-label>Credit Holder</mat-label>
+					<input matInput [errorStateMatcher]="errorStateMatcher" formControlName="holder"/>
+					<mat-error *ngIf="paymentCard.controls.holder.hasError('required')">
+						Please fill in the card holder name
+					</mat-error>
+				</mat-form-field><br/>
+				<mat-form-field class="card-mat-form-field" appearance="outline">
+					<mat-label>Expiration Date</mat-label>
+					<input matInput [errorStateMatcher]="errorStateMatcher" [matDatepicker]="picker" formControlName="expirationDate">
+					<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+					<mat-datepicker #picker></mat-datepicker>
+					<mat-error *ngIf="paymentCard.controls.expirationDate.hasError('required')">
+						Please fill in the expiration Date
+					</mat-error>
+					<mat-error
+						*ngIf="!!paymentCard.controls.expirationDate.value && paymentCard.controls.expirationDate.hasError('date')">
+						Date should be greater than Today
+					</mat-error>
+				</mat-form-field><br/>
+				<mat-form-field class="card-mat-form-field" appearance="outline">
+					<mat-label>Security Code (CCV)</mat-label>
+					<input matInput [errorStateMatcher]="errorStateMatcher" formControlName="securityCode" [type]="hide ? 'password' : 'text'"/>
+					<span matSuffix>
+            <mat-icon (click)="hide = !hide" class="visibility-icon">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+					</span>
+					<mat-error *ngIf="paymentCard.controls.securityCode.hasError('pattern')">
+						Invalid CCV pattern
+					</mat-error>
+				</mat-form-field><br/>
+				<mat-form-field class="card-mat-form-field" appearance="outline">
+					<mat-label>Amount</mat-label>
+					<input matInput [errorStateMatcher]="errorStateMatcher" formControlName="amount" type="number"/>
+					<mat-error *ngIf="paymentCard.controls.amount.hasError('required')">
+						Please fill in the amount
+					</mat-error>
+					<mat-error *ngIf="paymentCard.controls.amount.hasError('min')">
+						Amount should be more than 0
+					</mat-error>
+				</mat-form-field><br/>
+			</form>
+				<div class="form-actions">
+					<button mat-flat-button color="primary" (click)="submit()" [disabled]="paymentCard.invalid">Pay</button>
+					<button mat-flat-button color="warn" (click)="reset()">Clear</button>
+				</div>
+		</div>
+	</mat-card>
+</div>
